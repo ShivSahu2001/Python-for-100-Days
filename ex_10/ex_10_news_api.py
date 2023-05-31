@@ -9,8 +9,15 @@ API_KEY = "03cf57f6ee9141a9871a4537c958a6cd"
 url = f"https://newsapi.org/v2/top-headlines/sources?category={category}&apiKey={API_KEY}"
 res = requests.get(url)
 
-pretty = json.dumps(res.json(), indent=2)
+# pretty = json.dumps(res.json(), indent=2)
+news = json.loads(res.text)
+# print(news, type(news))
 
-pprint.pprint(pretty)
+for source in news["sources"]:
+    print(source["name"])
+    print(source["description"])
+    print("-----------------------------")
+
+# pprint.pprint(pretty)
 
 # print(res.json())
